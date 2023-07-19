@@ -8,7 +8,7 @@ router.get('/import', function (req, res, next) {
     res.json({ data: 'Loader' });
 });
 
-/*router.post('/import', async function (req, res, next) {
+router.post('/import', async function (req, res, next) {
     const postData = {
         source : `s3://${process.env.S3_ENDPOINT}/loader/`,
         format : "csv",
@@ -18,7 +18,7 @@ router.get('/import', function (req, res, next) {
     };
 
     try {
-        const data = await axios.post(`https://${NEPTUNE_ENDPOINT}:8182/loader`, postData);
+        const data = await axios.post(`https://${process.env.NEPTUNE_ENDPOINT}:8182/loader`, postData);
         console.log(data);
         res.send.json(data);
     } catch(err) {
@@ -26,6 +26,6 @@ router.get('/import', function (req, res, next) {
         res.status(500).json({ error: err });
     }
     
-});*/
+});
 
 export default router;

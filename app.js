@@ -6,10 +6,11 @@ import serverless from "serverless-http";
 const port = process.env.PORT || 3000;
 const app = express();
 
-//const importRoutes = require("./routes/import.routes");
 import importRoutes from './routes/import.routes.js';
+import personRoutes from './routes/person.routes.js';
 
 app.use('/', importRoutes);
+app.use('/', personRoutes);
 
 if (process.env.PROVIDER === 'aws') {
   exports.handler = serverless(app);
